@@ -1,5 +1,5 @@
 import  numpy as np
-
+import cmath
 def print_hi(name):
     print(f'Hi, {name}')
 #Suma de vectores
@@ -57,7 +57,6 @@ def mulMat(a,e):
         for i in range (ma):
             for j in range(na):
                 c[i][j]=e*a[i][j]
-        #print(elemento)  
     return c
 #Transpuesta de un vector complejo
 def transpuestaVec(c):
@@ -72,7 +71,6 @@ def transpuestaMat(a):
         for i in range (ma):
             for j in range(na):
                 c[i][j]=a[j][i]
-        #print(elemento)  
     return c
 #Conjugado de un vector
 def conVec(c):
@@ -85,6 +83,65 @@ def conMat(a):
         for j in range(len(a)):
             a[i][j]=np.conj(a[i][j])
     return(a)
+#Adjunta de un vector
+def dagaVector(c):
+    t=np.transpose(c)
+    for i in range (len(t)):
+        c[i]=np.conj(c[i])
+    return c
+#Adjnta de una matriz
+def dagaMatriz(a):
+    ma=len(a)
+    na=(len(a[0]))
+    c=[[0 for i in range (len(a))]for j in range (len(a))]
+    for elemento in c:
+        for i in range (ma):
+            for j in range(na):
+                c[i][j]=np.conjugate(a[j][i])
+    return c
+#Multiplicación de matrices
+def multiMatrices(a,b):
+    tfa = len(a)
+    tca = len(a[0])
+    tfb = len(b)
+    tcb = len(b[0])
+    if tfa != tfb:
+        print("Tamaños incompatibles")
+    else:
+        mult = [[0 for i in range (len(a))]for j in range (len(b))]
+        for j in range(tfa):
+            for k in range(tcb):
+                for l in range(tfb):
+                    mult[j][k] += a[j][l] * b[l][k]
+    return(mult)
+#Acción de una matriz sobre un vector
+def accionMatVec(b,d):
+    tfa = len(b)
+    tca = len(b[0])
+    tv = len(d)
+    resultado = [[0 for i in range (len(b)-1)]for j in range (len(d))]
+    for j in range(tv):
+        for k in range(tca-1):
+            for l in range(tfa):
+                resultado[j][k] += b[j][l] * d[l]
+    return resultado 
+#Producto interno de dos vectores
+def productoInterno(c,d):
+    s=dagaVector(c)
+    pi=0
+    for i in range(len(c)):
+        pi+=s[i]*d[i]
+    return pi
+#Norma de un vector
+def normaVec(d):
+    resultado = ((productoInterno(d,d))**(1/2))
+    return resultado
+#Distancia entre vectores
+def distaciasVectores(c,d):
+    p1=ResVec(c,d)
+    resultado = (productoInterno(p1,p1))**(1/2)
+    return resultado
 #Función principal
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    
+   print_hi('PyCharm')
