@@ -12,6 +12,16 @@ A partir de vectores y matrices dadas, se crea una librería en python capaz de 
 - Multiplicación de un escalar por una matriz compleja.
 - Transpuesta de una matriz/vector.
 - Conjugada de una matriz/vector.
+- Adjunta de una matriz/vector.
+- Producto de dos matrices (de tamaños compatibles)
+- Función para calcular la "acción" de una matriz sobre un vector.
+- Producto interno de dos vectores
+- Norma de un vector
+- Distancia entre dos vectores
+- Valores  y vectores propios de una matriz
+- Revisar si una matriz es unitaria
+- Revisar si una matriz es Hermitiana
+- Producto tensor de dos matrices/vectores
 
 ![Python](https://img.freepik.com/iconos-gratis/serpientes_318-368381.jpg)
 
