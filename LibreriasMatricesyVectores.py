@@ -140,9 +140,6 @@ def distaciasVectores(c,d):
     p1=ResVec(c,d)
     resultado = (productoInterno(p1,p1))**(1/2)
     return resultado
-#Valores propios de una matriz
-def valoresMatriz(a):
-    print(a)
 #Matriz unitaria
 def matrizUnitaria(a):
     if multiMatrices(a,dagaMatriz(a))==multiMatrices(dagaMatriz(a),a):
