@@ -1,5 +1,4 @@
 import  numpy as np
-import cmath
 def print_hi(name):
     print(f'Hi, {name}')
 #Suma de vectores
@@ -141,7 +140,47 @@ def distaciasVectores(c,d):
     p1=ResVec(c,d)
     resultado = (productoInterno(p1,p1))**(1/2)
     return resultado
-#Función principal
+#Valores propios de una matriz
+def valoresMatriz(a):
+    print(a)
+#Matriz unitaria
+def matrizUnitaria(a):
+    if multiMatrices(a,dagaMatriz(a))==multiMatrices(dagaMatriz(a),a):
+        b="Si es unitaria"
+    else:
+        b="No es unitaria"
+    return b
+#Matriz hermitiana
+def matrizHermitiana(a):
+    if a==dagaMatriz(a):
+        b="Sí es hermitiana"
+    else:
+        b="No es hermitiana"
+    return b
+#Producto tensor de dos vectores
+def productoTensorV(c,d):
+    resultado=[]
+    for i in range (len(c)):
+        for j in range(len(d)):
+            r=c[i]*d[j]
+            resultado.append(r)
+    return resultado
+#Producto tensor de dos matrices
+def productoTensorM(a,b):   
+    n=len(b)
+    n2=len(b[0])
+    m=len(a)
+    m2=len(a[0])
+    t=n*m
+    t2=n2*m2
+    r=[[0 for i in range (t)]for j in range (t2)]
+    for elemento in r:
+        for i in range(t2):
+            for j in range(t):
+                r[i][j]=a[i//n][j//n2]*b[i%n][j%n2]
+        print(elemento)
+    return r
+
 if __name__ == '__main__':
     
    print_hi('PyCharm')
