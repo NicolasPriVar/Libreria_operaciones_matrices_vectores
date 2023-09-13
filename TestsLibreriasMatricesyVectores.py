@@ -3,7 +3,6 @@ import unittest
 
 class TestCibreriaComplejos(unittest.TestCase):
 
-    #Casos prueba de la suma
     def test_sumavectores(self):
         #Primer caso de prueba
         v1=lm.SumVec([3+4j,2-5j],[4+9j,3+8j])
@@ -139,5 +138,26 @@ class TestCibreriaComplejos(unittest.TestCase):
         #Segundo caso de prueba
         v=lm.distaciasVectores([2+2j, 2-2j],[2+2j, 2-2j])
         self.assertAlmostEqual(v, 0)
+    def test_matrizUnitaria(self):
+        #Primer caso de prueba
+        v=lm.matrizUnitaria([[23, -123j, 0],[123j, 23, 0],[0, 0, 1]])
+        self.assertAlmostEqual(v, "Si es unitaria")
+        #Segundo caso de prueba
+        v=lm.matrizUnitaria([[23, -1j, 0],[123j, 23, 0],[0, 5, 1]])
+        self.assertAlmostEqual(v, "No es unitaria")
+    def test_matrizHermitiana(self):
+        #Primer caso de prueba
+        v=lm.matrizHermitiana([[5, 4+5j, 6-16j],[4-5j, 13, 7],[6+16j, 7, -2.1]])
+        self.assertAlmostEqual(v, "Sí es hermitiana")
+        #Segundo caso de prueba
+        v=lm.matrizHermitiana([[23, -1j, 0],[123j, 23, 0],[0, 5, 1]])
+        self.assertAlmostEqual(v, "No es hermitiana")
+    def test_productoTensorV(self):
+        #Primer caso de prueba
+        v=lm.productoTensorV([2j, 1+6j],[-5j, 3+4j, -2.1])
+        self.assertAlmostEqual(v, [(10-0j), (-8+6j), (-0-4.2j), (30-5j), (-21+22j), (-2.1-12.600000000000001j)])
+        #Segundo caso de prueba
+        v=lm.productoTensorV([2j, 6j], [2j, 3+2j, -2j])
+        self.assertAlmostEqual(v, [(-4+0j), (-4+6j), (4-0j), (-12+0j), (-12+18j), (12-0j)])
 if __name__ == '__main__':
     unittest.main()
